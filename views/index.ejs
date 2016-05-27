@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><%= title %></title>
+
+	<!--[if lt IE9]> 
+		<script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" href="stylesheets/style.css">
+
+</head>
+<body>
+	<header class="shadow">
+		<h1>who</h1>
+		<p>online</p>
+	</header>
+	
+	<div id="main" class="main shadow">
+
+	</div>
+	
+	<div class="send">
+		<input type="text" class="left" id="send-left" placeholder="please input words">
+		<input id="submit" class="right" type="submit" value="send">
+	</div>
+
+	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+	<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+	<script>
+		(function($) {
+
+			var socket = io();
+			var uni = (function() {
+			    var text = "";
+			    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+			    for( var i = 0; i < 32; i++ ) {
+			        text += possible.charAt(Math.floor(Math.random() * possible.length));
+			    }
+			    return text;
+			}());
+
+			$("#submit").on("click", function() {
+				var content = "<section class='chat-right'><img src='images/a.png'><span>" + $("#send-left").val() + "</span></section>";
+				$("#main").append(content);
+				$("#main").scrollTop($("#main").height());
+				
+				socket.emit('chat', $('#send-left').val(), uni);
+
+				$("#send-left").val("");
+
+			});
+
+		  	socket.on('chat', function(msg, id){
+		  		if (id != uni) {
+		  			var content = "<section class='chat-left'><img src='images/b.png'><span>" + msg + "</span></section>";
+					$("#main").append(content);
+					$("#main").scrollTop($("#main").height());
+		  		};
+      		});
+
+		})( jQuery );
+	</script>
+
+</body>
+</html>
+

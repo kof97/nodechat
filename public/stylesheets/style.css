@@ -1,0 +1,42 @@
+/*html5*/
+footer, header, section { display: block }
+
+* { margin: 0; padding: 0; }
+
+html { width: 100%; }
+body { width: 50%; min-width: 300px; margin: 0 auto; }
+
+.left { float: left; }
+.right { float: right; }
+.shadow { box-shadow: 0 0 1px #888888; }
+
+header { width: 100%; padding: 5px 0; background: #88D2FC; text-align: center; color: white; }
+
+.main { width: 100%; height: 400px; background: #EFE1E0; overflow: auto; }
+.main::-webkit-scrollbar {
+    width: 7px;
+}
+.main::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+.main::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.1);
+    -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.5);
+}
+
+section { width: 100%; display: inline-block; margin: 5px 0;}
+section img { width: 30px; height: 30px; border-radius: 5px; border: solid 1px #F0F0F0;}
+section span { max-width: 80%; padding: 7px; margin: 0 5px; border-radius: 10px; font-size: 16px; word-wrap: break-word; }
+
+.chat-left img { float: left; }
+.chat-left span { float: left; background: #CDD7E2; }
+
+.chat-right img { float: right; }
+.chat-right span { float: right; background: #78CDF8; }
+
+/* send */
+.send { width: 100%; }
+#send-left { width: 80%; line-height: 30px; font-size: 16px; }
+#submit { height: 34px; width: 18%; font-size: 16px; } 
