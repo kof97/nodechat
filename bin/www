@@ -24,9 +24,9 @@ var server = http.createServer(app);
 var io = require('socket.io')(server);
 
 io.on('connection', function(socket) {
-    socket.on('chat', function(msg, id) {
-        io.emit('chat', msg, id);
-    });
+  socket.on('chat', function(msg, id) {
+    io.emit('chat', msg, id);
+  });
 });
 
 /**

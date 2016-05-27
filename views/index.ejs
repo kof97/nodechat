@@ -35,7 +35,7 @@
 			var uni = (function() {
 			    var text = "";
 			    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-			    for( var i = 0; i < 32; i++ ) {
+			    for ( var i = 0; i < 32; i++ ) {
 			        text += possible.charAt(Math.floor(Math.random() * possible.length));
 			    }
 			    return text;
@@ -52,7 +52,7 @@
 
 			});
 
-		  	socket.on('chat', function(msg, id){
+		  	socket.on('chat', function(msg, id) {
 		  		if (id != uni) {
 		  			var content = "<section class='chat-left'><img src='images/b.png'><span>" + msg + "</span></section>";
 					$("#main").append(content);
